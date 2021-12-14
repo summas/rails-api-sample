@@ -1,0 +1,26 @@
+#postgresql
+
+default: &default
+  adapter: postgresql
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV.fetch("POSTGRESQL_USER") { "postgres" } %>
+  password: <%= ENV.fetch("POSTGRESQL_ROOT_PASSWORD") { "postgres" } %>
+  host: <%= ENV.fetch("POSTGRESQL_HOST") { "db" } %>
+
+
+development:
+  <<: *default
+  database: <%= ENV.fetch("DEVELOPMENT_DATABASE") { "next_api" } %>
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  database: next_api_test
+
+production:
+  <<: *default
+  database: <%= ENV['PRODUCTION_DATABASE'] { "next_api_production" } %>
+  username: <%= ENV['POSTGRESQL_USER'] %>
+  password: <%= ENV['POSTGRESQL_DATABASE_PASSWORD'] %>
