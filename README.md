@@ -7,7 +7,5 @@
 ## バージョン 
 #### ruby : 3.0.2
 #### rails : 6.1.4
-
-### DB
-####  postgres
+####  postgres : 14.1
 
