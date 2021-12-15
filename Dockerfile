@@ -10,11 +10,8 @@ RUN apt-get -y install nodejs yarn build-essential
 ADD Gemfile Gemfile
 ADD Gemfile.lock Gemfile.lock
 RUN gem install bundler
-CMD kernel.msgmnb=1048576
+RUN bundle install
 ENV APP_HOME /next-api
 RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
 ADD . $APP_HOME
-
-# RUN bundle install
-# RUN bundle exec rake db:create
